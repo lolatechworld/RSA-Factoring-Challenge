@@ -1,5 +1,8 @@
-#!/usr/bin/env bash
-# Factorize as many numbers as possible into a product of two smaller numbers.
+#!/usr/bin/bash
+FILE=$1
+while read NUMBERS;
+do
 
-gcc factors.c -o a
-./a $1
+        factors=($(factor $NUMBERS))
+        echo "$NUMBERS=$(($NUMBERS/${factors[1]}))*${factors[1]}"
+done < $FILE
